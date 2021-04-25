@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Title </title>
+    <style>
+    div {
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+    .center {
+      width:50%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    label {margin: 10px;}
+
+    .lgbtButton {color: red;
+      text-decoration: none;
+        display: inline-block;
+        color: white;
+        padding: 20px 30px;
+        margin: 10px 20px;
+        border-radius: 2em;
+        font-family: 'Monospace';
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+        background-size: 200% auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+        transition: .5s;
+    }
+    .signUPbutton:hover {
+      background-position: right center;
+    }
+    .form-group {
+      font-size: 18px;
+      text-align: center;
+    }
+    .errorBox {
+      width: 15%;
+      padding:5px 5px 5px 5px;
+      border: 1px solid;
+      color: #D8000C;
+      background-color: #FFBABA;
+      text-align: left;
+    }
+    .errorBox li {
+      margin-bottom: 4px;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div align="center">
+      <form method="post" action="{% url 'registration' %}" >
+        {% csrf_token %}
+        <h3> SIGN UP </h3>
+        {% if alreadyTaken or passNotMatch or usernameTooShort or noNumbers or noUppercase or noSpecial%}
+        <div class=errorBox>
+        <ul>
+        {% if alreadyTaken%}
+          <li>This username is already taken! Please choose another one!</li>
+        {% endif %}
+        {% if passNotMatch%}
+          <li>The passwords do not match!</li>
+        {% endif %}
+        {% if usernameTooShort%}
+          <li>Username must be at least 4 characters long!</li>
+        {% endif %}
+        {% if noNumbers%}
+          <li>Password must contain at least one number!</li>
+        {% endif %}
+        {% if noNumbers%}
+          <li>Password must contain at least one capital letter!</li>
+        {% endif %}
+        {% if noSpecial%}
+          <li>Password must contain at least one special symbol (!, [], #, % e.t.c)!</li>
+        {% endif %}
+        </ul>
+      </div>
+        {% endif %}
+      <div class="center" align = "center">
+        <div class="form-group">
+            <label for="username"> Username: </label>
+            <br>
+            <input type="text" name="username" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="password"> Password: </label>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="passwordRepeat"> Repeat password: </label>
+            <br>
+            <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="PasswordRepeat">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="lgbtButton" value="SIGN UP">
+        </div>
+        <div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Title </title>
+    <style>
+    div {
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+    .lgbtButton {color: red;
+      text-decoration: none;
+        display: inline-block;
+        color: white;
+        padding: 20px 30px;
+        margin: 10px 20px;
+        border-radius: 2em;
+        font-family: 'Monospace';
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+        background-size: 200% auto;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+        transition: .5s;
+    }
+    .lgbtButton:hover {
+      background-position: right center;
+    }
+    
+    .login {
+    }
+
+    .errorBox {
+      width: 15%;
+      padding:5px 5px 5px 5px;
+      border: 1px solid;
+      color: #D8000C;
+      background-color: #FFBABA;
+      text-align: left;
+    }
+
+    .form-group {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .signUp {
+      margin-left: 10%;
+      padding: 10px 20px;
+      background-image: linear-gradient(to right, #C083F7 0%, #8D23EF 51%, #C083F7 100%);
+    }
+    </style>
+  </head>
+  <body>
+    <div align="center">
+      <form method="post" action="{% url 'login' %}" >
+        {% csrf_token %}
+        <h3> LOGIN </h3>
+        {% if invalid%}
+        <div class="errorBox">
+          <p align="center"> Incorrect login or password. </p>
+        </div>
+        {% endif %}
+        <div class="form-group">
+            <label for="username"> Username: </label>
+            <br>
+            <input type="text" name="username" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="password"> Password: </label>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Login" class = "lgbtButton login">
+        </div>
+      <a href="{% url 'registration' %}"><button type="button"  class = "lgbtButton signUp">Sign up</button></a>
+      </form>
+    </div>
+  </body>
+</html>
