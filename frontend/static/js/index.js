@@ -15,7 +15,7 @@ async function getUser(id){
   let answer = await response.json();
 
   document.getElementById("user").innerHTML = answer.username;
-  let getCycle = await fetch('http://127.0.0.1:8000/cycle/' + answer['cycle'],{
+  let getCycle = await fetch('http://127.0.0.1:8000/cycles/' + answer['cycle'],{
     method: 'GET'
   });
   let cycle = await getCycle.json();
