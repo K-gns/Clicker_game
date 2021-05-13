@@ -8,11 +8,11 @@ from user_profile.models import MainCycle
 
 def index(request):
     user = User.objects.filter(id=request.user.id)
-    if len(user) != 0:
+    if len(user) > 0:
         mainCycle = MainCycle.objects.filter(user=request.user)[0]
         return render(request, 'index.html', {'user':user, 'mainCycle':mainCycle})
     else:
-        return redirect('')
+        return render(request, 'login.html')
 
 
 def user_login(request):
