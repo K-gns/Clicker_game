@@ -3,12 +3,12 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 urlpatterns = [
-    path('', views.index),
-    path('login/', views.user_login, name="login" ),
-    path('logout/', views.user_logout, name="logout"),
-    path('registration/', views.user_registration, name="registration"),
+    path('click/', views.callClick, name="click"),
     path('users/', views.UserList.as_view()),
     path('users/<int:pk>/', views.UserDetail.as_view()),
+    path('cycles/', views.CycleList.as_view()),
+    path('cycles/<int:pk>/', views.CycleDetail.as_view()),
+    path('buyBoost/', views.buyBoost, name="buyBoost"),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

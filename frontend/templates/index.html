@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="utf-8">
+    <div>
+      <title >Title </title>
+    </div>
+  </head>
+  <body onload="getUser({{user.id}})">
+     <main>
+
+      <div id="main">
+        <div class="clicker">
+          <h3> Welcome, <div id="user">%user%</div></h3>
+          <div class="logout"><a href="/logout">LOGOUT</a></div>
+          <div class="stats">You have <div id="data">{{mainCycle.coinsCount}}</div> coins </div>
+          <div class="stats"> Your click power is <div id="clickPower">{{mainCycle.clickPower}}</div> coins per click</div>
+          <br>
+          <input type="image" class="catgirl" src="{% static 'images/catgirl.png' %}" onclick="callClick()" />
+      </div>
+
+
+        <div class="boosters">
+          <figure class = "boostBlock">
+            <figcaption class="price"><b>UPGRADE for <a id="boostPrice">{{mainCycle.boostPrice}}</a> coins</b></figcaption>
+          <input type="image" class="catgirl boost" src="{% static 'images/boost.jpg' %}" onclick="buyBoost()" />
+          </figure>
+        </div>
+      </div>
+
+
+    </main>
+  </body>
+</html>

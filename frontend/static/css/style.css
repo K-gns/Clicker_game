@@ -1,0 +1,60 @@
+.catgirl{
+  opacity: 0.7;
+}
+
+.catgirl:hover{
+  opacity: 0.8;
+}
+
+.catgirl:active{
+  opacity: 1;
+}
+
+.boost{
+  height: 300px;
+  width: 250px;
+}
+
+html, body{
+        height: 100%;
+    }
+    body{
+        background-color: #66A3D2;
+    }
+
+    div {
+        margin:10px;
+        text-align: center;
+    }
+    #main{
+        width: 100%;
+        height: 150px;
+    }
+
+    .boosters
+    {
+      float: left;
+      margin-left: 20%;
+      font-size: 16pt;
+    }
+    #data, #clickPower, #boostPrice  {
+      font-size: 30pt;
+      font-weight: bold;
+    }
+    .stats {
+      width: 240px;
+      font-size: 20pt;
+      display: inline-block;
+      padding: 10px;
+      border: 3px black solid;
+      border-radius:10pt;
+      background-color: #3E94D1;
+    }
+    .price {
+      width: 240px;
+      font-size: 16pt;
+      padding: 5px;
+      border: 3px black solid;
+      border-radius:10pt;
+      background-color: #3E94D1;
+    }
