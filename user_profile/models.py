@@ -57,7 +57,7 @@ class Boost(models.Model):
                 self.power *= int((self.level + 1)*(math.log(self.level, 2)))
         else:
             self.mainCycle.auto_click_power += self.power
-            self.price *= 10
+            self.price *= (self.level + 1)*9
             self.power *= int((self.level + 1) / 2)
         #self.power *= 2
         self.save()
