@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import MainCycle
+from .models import MainCycle, User, Boost
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -21,4 +20,9 @@ class CycleSerializer(serializers.ModelSerializer):
 class CycleSerializerDetail(serializers.ModelSerializer):
     class Meta:
         model = MainCycle
-        fields = ['id', 'user', 'coinsCount', 'clickPower', 'boostPrice', 'boosts']
+        fields = ['id', 'user', 'coinsCount', 'clickPower', 'boosts', 'auto_click_power', 'level', 'toNextLevel']
+
+class BoostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Boost
+        fields = ['level', 'power', 'price', 'boost_type']

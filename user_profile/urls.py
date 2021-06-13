@@ -9,6 +9,8 @@ urlpatterns = [
     path('cycles/', views.CycleList.as_view()),
     path('cycles/<int:pk>/', views.CycleDetail.as_view()),
     path('buyBoost/', views.buyBoost, name="buyBoost"),
+    path('boosts/<int:mainCycle>/', views.BoostList.as_view()),
+    path('set_main_cycle/', views.set_main_cycle),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

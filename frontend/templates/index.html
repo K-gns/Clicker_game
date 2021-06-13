@@ -10,28 +10,44 @@
     </div>
   </head>
   <body onload="getUser({{user.id}})">
-     <main>
 
-      <div id="main">
+<div id="container">
+  <div class="header"><h3> Welcome, <div id="user">%user%</div></h3>
+    <div class="logout"><a id="logoutText" href="/logout">LOGOUT</a></div>
+</div>
+
+       <div id="left">
+          <div class="rasporka"></div>
+          <div class="boost-wrapper-left" id="boost-wrapper-left"> </div>
+       </div>
+
+      <div id="main" class="main">
         <div class="clicker">
-          <h3> Welcome, <div id="user">%user%</div></h3>
-          <div class="logout"><a href="/logout">LOGOUT</a></div>
-          <div class="stats">You have <div id="data">{{mainCycle.coinsCount}}</div> coins </div>
-          <div class="stats"> Your click power is <div id="clickPower">{{mainCycle.clickPower}}</div> coins per click</div>
-          <br>
-          <input type="image" class="catgirl" src="{% static 'images/catgirl.png' %}" onclick="callClick()" />
-      </div>
 
+            <ul class="statsBlock">
+                <li class="stats clicks">You have <br><a id="data" class="statNumber">{{mainCycle.coinsCount}}</a>👆<br></li>
+                <li class="stats"> Your click power is <div id="clickPower" class="statNumber">{{mainCycle.clickPower}}</div></li>
+                <li class="stats"> Your level is <div id="level" class="statNumber">{{mainCycle.level}}</div></li>
+                <li class="stats"> Your auto-click is <div id="auto_click_power" class="statNumber">{{mainCycle.auto_click_power}}</div></li>
+              </ul>
+              <br>
+              <input type="image" class="catgirl" src="{% static 'images/catgirl.png' %}" onclick="callClick()" />
+          </div>
 
-        <div class="boosters">
-          <figure class = "boostBlock">
-            <figcaption class="price"><b>UPGRADE for <a id="boostPrice">{{mainCycle.boostPrice}}</a> coins</b></figcaption>
-          <input type="image" class="catgirl boost" src="{% static 'images/boost.jpg' %}" onclick="buyBoost()" />
-          </figure>
+          <div class="progressInfo">
+            <a>Progress to next lvl ( <a id="nextLvl" class="nextLvl-needs"></a>👆 needs)</a>
+          <progress id="progress" value="0" max="101">
+            Прогресс уровня <span id="percent">0</span>%
+          </progress>
         </div>
+
       </div>
 
+      <div id="right">
+          <div class="rasporka"></div>
+          <div class="boost-wrapper-right" id="boost-wrapper-right"> </div>
+        </div>
 
-    </main>
+      </div>
   </body>
 </html>

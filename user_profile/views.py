@@ -4,36 +4,37 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework import generics
 from django.http import HttpResponse
 from rest_framework.views import APIView
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserSerializerDetail, CycleSerializer, CycleSerializerDetail, BoostSerializer
 from .models import MainCycle, Boost
 from .forms import UserForm
 import json
+import services
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
-
-
+@api_view(['GET'])
 def callClick(request):
-    user = User.objects.filter(id=request.user.id)
-    mainCycle = MainCycle.objects.filter(user=request.user)[0]
-    mainCycle.Click()
-    mainCycle.save()
-    return HttpResponse(mainCycle.coinsCount)
+    data = services.clicker_services.callClick(request)
+    return Response(data)
 
+@api_view(['POST'])
 def buyBoost(request):
-    mainCycle = MainCycle.objects.filter(user=request.user)[0]
-    if not mainCycle.boosts.filter():
-        boost = Boost()
-        boost.mainCycle = mainCycle
-        boost.save()
-    else:
-        boost = mainCycle.boosts.filter()[0]
-        boost.mainCycle = mainCycle
-    boost.Upgrade()
-    mainCycle.save()
-    json1 = { "clickPower": mainCycle.clickPower, "boostPrice": mainCycle.boostPrice, "coinsCount": mainCycle.coinsCount }
-    responseJson = json.dumps(json1)
-    return HttpResponse(responseJson)
+    main_cycle, level, price, power = services.clicker_services.buy_boost(request)
+    return Response({'clickPower': main_cycle.clickPower,
+                    'coinsCount':main_cycle.coinsCount,
+                    'auto_click_power': main_cycle.auto_click_power,
+                    'level':level,
+                    'price':price,
+                    'power': power})
 
+@api_view(['POST'])
+def set_main_cycle(request):
+    main_cycle, boosts = services.clicker_services.set_main_cycle(request)
+    return Response({"coins_count": main_cycle.coinsCount,
+                    "level": main_cycle.level,
+                     "boosts": boosts,
+                     "toNextLevel": main_cycle.toNextLevel})
 
 from rest_framework import generics
 from . import serializers
@@ -53,7 +54,12 @@ class CycleList(generics.ListAPIView):
     queryset = MainCycle.objects.all()
     serializer_class = serializers.CycleSerializer
 
-
 class CycleDetail(generics.RetrieveAPIView):
     queryset = MainCycle.objects.all()
     serializer_class = serializers.CycleSerializerDetail
+
+class BoostList(generics.ListCreateAPIView):
+    queryset = Boost
+    serializer_class = BoostSerializer
+    def get_queryset(self):
+        return Boost.objects.filter(mainCycle=self.kwargs['mainCycle'])

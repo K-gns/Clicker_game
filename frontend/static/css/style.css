@@ -1,5 +1,7 @@
 .catgirl{
   opacity: 0.7;
+  width: 150;
+  Height: 180;
 }
 
 .catgirl:hover{
@@ -10,41 +12,105 @@
   opacity: 1;
 }
 
-.boost{
-  height: 300px;
-  width: 250px;
+.boost-bttn:disabled{
+  opacity: 0.3;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+.header {
+  padding: -2px;
+  text-align: center;
+  background: #1E6087;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 10px;
+  display:flex;
+  justify-content: center;
+
+}
+
+.header h3 {
+  text-shadow: black 1px 1px 0, black -1px -1px 0,
+                 black -1px 1px 0, black 1px -1px 0;
+}
+
+.logout {
+  position:fixed;
+   right:20px;
+   top:10px;
+}
+
+.logout {
+  background-color: #e74c3c;
+  box-shadow: 0px 5px 0px 0px #CE3323;
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 20px;
+  color: #fff;
+}
+
+.logout:hover {
+  background-color: #FF6656;
+}
+
+#logoutText {
+  text-decoration: none;
+  color: #fff;
 }
 
 html, body{
-        height: 100%;
+
     }
     body{
         background-color: #66A3D2;
     }
 
-    div {
-        margin:10px;
-        text-align: center;
-    }
-    #main{
-        width: 100%;
-        height: 150px;
-    }
+
 
     .boosters
     {
-      float: left;
-      margin-left: 20%;
-      font-size: 16pt;
+      /* float: left;
+      font-size: 16pt; */
     }
-    #data, #clickPower, #boostPrice  {
-      font-size: 30pt;
+
+    .boost-Name {
+      font-size: 16pt;
       font-weight: bold;
     }
-    .stats {
-      width: 240px;
+
+    #power-desc {
+      font-size: 18pt;
+    }
+
+    #boostPower { font-weight: bold; }
+
+     #boostLevel  {
+      font-size: 18pt;
+      font-weight: bold;
+    }
+
+
+    #priceP {
       font-size: 20pt;
-      display: inline-block;
+      font-weight: bold;
+      border: solid 3px #FFCC8D;
+      padding: 3px;
+      background-color: #FFE9AC;
+    }
+
+    .statNumber {
+      font-size: 24pt;
+      font-weight: bold;
+    }
+
+    .stats {
+      width: 150px;
+      font-size: 20pt;
       padding: 10px;
       border: 3px black solid;
       border-radius:10pt;
@@ -58,3 +124,207 @@ html, body{
       border-radius:10pt;
       background-color: #3E94D1;
     }
+
+
+#container {
+width: 100%;
+margin: 0 auto;
+min-height: 3000px;
+}
+
+#main, #left, #right {
+  display: inline-block;
+}
+
+#main {
+margin: 0 35% 0 35%;
+width: 30%;
+margin: auto auto;
+}
+
+#left {
+  width: 30%;
+   float: left;
+   margin-left: 5%;
+}
+
+.rasporka {
+  width = 100%;
+  height: 2px;
+  background-color: red;
+  visibility: hidden;
+}
+
+#right {
+width: 30%;
+ float: right;
+ text-align: right;
+ vertical-align: right;
+    margin-right: 5%;
+}
+
+#right > div {
+   margin-left: auto;
+}
+
+#main *{
+  text-align: center;
+}
+
+
+.statsBlock {
+padding-left: 0;
+width: 100%;
+}
+
+.statsBlock > li {
+  white-space: normal;
+	display: inline-block;
+	width: auto;
+	vertical-align: top;
+  list-style-type: none;
+
+}
+
+.statsBlock > li:first-child {
+  white-space: normal;
+	display: inline-block;
+	width: 100%;
+
+}
+
+.boost-holder-upper-left {
+  text-align: center;
+  width: 70%;
+  font-size: 14pt;
+  /* display: inline-block; */
+  padding: 10px;
+  border: 3px black solid;
+  border-radius:10pt;
+  background-color: #1C8C53;
+  margin-bottom: 15px;
+  box-shadow: 0px 5px 0px 0px #212222;
+}
+
+.boost-holder-upper-right {
+  margin-left: auto;
+  text-align: center;
+  width: 70%;
+  font-size: 14pt;
+  /* display: inline-block; */
+  padding: 10px;
+  border: 3px black solid;
+  border-radius:10pt;
+  background-color: #1C8C53;
+  margin-bottom: 15px;
+  box-shadow: 0px 5px 0px 0px #212222;
+}
+
+.boost-holder-upper-left *, .boost-holder-upper-right * {
+  margin: 0;
+  margin-bottom: 0.2em;
+}
+
+.boost-holder-upper :last-child {
+
+}
+
+.click-boost-holder {
+}
+
+.autoclick-boost-holder{
+
+}
+
+.click-boost-holder > input {
+  height: 90px;
+  width: 90px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  float: left;
+  margin-left: 3em;
+  margin-top: 1em;
+  vertical-align: middle;
+  border: solid 8px #005B39;
+  border-radius: 14px;
+}
+
+.autoclick-boost-holder > input {
+  height: 90px;
+  width: 90px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  float: left;
+  margin-left: 3em;
+  margin-top: 1em;
+  vertical-align: middle;
+  border: solid 8px #005B39;
+  border-radius: 14px;
+}
+
+
+.boost-holder * {
+  vertical-align: baseline;
+}
+
+
+
+.boost-holder :last-child {
+  display:inline-block;
+}
+
+.progressInfo {
+  font-size: 14pt;
+  margin-top: 20px;
+}
+
+progress {
+    display: block;
+    color: green;
+    background: yellow;
+    border: 2px solid green;
+    border-radius: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 300px;
+    height: 25px;
+    line-height: 21px;
+    font-size: 15px;
+    font-family: sans-serif;
+    text-align: center;
+    /* margin-top: 20px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nextLvl-needs {
+  font-weight: bold;
+}
+
+
+
+#priceP {
+    background-color: #ffe9b0;
+    box-shadow: 0px 5px 0px 0px #A68839;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 22px;
+    text-decoration: none;
+    /* margin: 20px; */
+    color: #000000;
+}
+
+#buy:hover {
+  border: 6px solid;
+}
+
+#priceP:hover {
+  /* border: 4px solid #A68839; */
+  background-color: #FFF3D4;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
